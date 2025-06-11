@@ -35,13 +35,94 @@ label {
 }
 
 .ticket-item {
-    padding: 10px;
+    padding: 20px;
     margin-bottom: 20px;
     margin-top: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
     position: relative;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
 
+.ticket-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    border-color: #1f69e1;
+}
+
+.ticket-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.ticket-title-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.ticket-title {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.2em;
+    font-weight: 600;
+    flex-grow: 1;
+}
+
+.priority-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.05);
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.priority-label {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.priority-label.priority-high {
+    color: #e74c3c;
+}
+
+.priority-label.priority-medium {
+    color: #f39c12;
+}
+
+.priority-label.priority-low {
+    color: #27ae60;
+}
+
+.ticket-description {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border-left: 4px solid #e9ecef;
+}
+
+.ticket-description p {
+    margin: 0;
+    color: #6c757d;
+    line-height: 1.5;
+}
+
+.ticket-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
 }
 
 /* src/styles/App.css */
@@ -107,12 +188,11 @@ button {
   }
 
 .priority-dot {
-    height: 20px;
-    width: 20px;
+    height: 12px;
+    width: 12px;
     border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    position: relative;
+    flex-shrink: 0;
 }
 
 .priority-low {
@@ -178,4 +258,29 @@ select {
     font-weight: bold;
     color: var(--accent-color, #a3e583);
   }
+
+/* Button specific styles for tickets */
+.button-edit {
+    background-color: #3498db;
+    color: white;
+    font-size: 0.85em;
+    padding: 8px 16px;
+}
+
+.button-edit:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.button-delete {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 0.85em;
+    padding: 8px 16px;
+}
+
+.button-delete:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
   
