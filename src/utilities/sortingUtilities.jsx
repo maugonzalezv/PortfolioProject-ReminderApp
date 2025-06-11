@@ -1,14 +1,12 @@
-export const  sortTickets = (tickets, preference) => {
+export const sortTickets = (tickets, preference) => {
     switch(preference){
-
         case "High to Low":
-            return [...tickets].sort((a,b)=> b.priority.localCompare(a.priority))
+            return [...tickets].sort((a, b) => parseInt(b.priority) - parseInt(a.priority))
 
         case "Low to High":
-            return [...tickets].sort((a,b)=> a.priority.localCompare(b.priority))
+            return [...tickets].sort((a, b) => parseInt(a.priority) - parseInt(b.priority))
+            
         default:
             return tickets
     }
-
-
 }

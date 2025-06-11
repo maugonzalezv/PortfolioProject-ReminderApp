@@ -1,5 +1,4 @@
-import React , {useState, useEffect, use} from "react";
-
+import React, {useState, useEffect} from "react";
 
 export default function TicketForm({dispatch, editingTicket}){
 
@@ -36,23 +35,28 @@ export default function TicketForm({dispatch, editingTicket}){
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // Basic validation
+        if (!title.trim()) {
+            alert('Please enter a title for your reminder');
+            return;
+        }
+
         const ticketData = {
-            id:editingTicket? editingTicket.id : new Date().toISOString(),
-            title,
-            description,
+            id: editingTicket ? editingTicket.id : new Date().toISOString(),
+            title: title.trim(),
+            description: description.trim(),
             priority,
         };
 
         dispatch({
-            type: editingTicket? "UPDATE_TICKET" :"ADD_TICKET",
+            type: editingTicket ? "UPDATE_TICKET" : "ADD_TICKET",
             payload: ticketData
         });
 
         clearForm();
     }
 
-    const handelCancel = () => {
-
+    const handleCancel = () => {
         dispatch({type: "CLEAR_EDITING_TICKET"})
         clearForm();
     }
@@ -63,16 +67,16 @@ export default function TicketForm({dispatch, editingTicket}){
                 <label>Title</label>
                 <input 
                 type="text" 
-                value ={title} 
+                value={title} 
                 className="form-input" 
                 onChange={e => setTitle(e.target.value)}
+                required
                 />
             </div>
             <div>
                 <label>Description </label>
                 <textarea 
-                type="text" 
-                value ={description} 
+                value={description} 
                 className="form-input" 
                 onChange={e => setDescription(e.target.value)}
                 />
@@ -88,8 +92,9 @@ export default function TicketForm({dispatch, editingTicket}){
                             <input 
                             className="priority-input" 
                             type="radio" 
+                            name="priority"
                             value={value} 
-                            checked={priority===value}
+                            checked={priority === value}
                             onChange={e => setPriority(e.target.value)}
                             />
                         {label}
@@ -100,7 +105,7 @@ export default function TicketForm({dispatch, editingTicket}){
                 </fieldset>
 
                 {editingTicket && (
-                    <button className="button" onClick={handelCancel}>Cancel Edit </button>
+                    <button type="button" className="button" onClick={handleCancel}>Cancel Edit </button>
                 )}
 
                 <button type="submit" className="button">Submit</button>
